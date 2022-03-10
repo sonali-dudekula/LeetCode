@@ -37,10 +37,10 @@ class Solution{
     public static boolean isPowerofTwo(long n){
         
         // Your code here
-        long ans = n & (n-1);
+        // long ans = n & (n-1);
         if (n == 0) 
             return false;
-        else if (ans == 0) 
+        else if ((n & (n-1)) == 0) 
                 return true;
         else
             return false;
