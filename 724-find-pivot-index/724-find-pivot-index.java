@@ -1,22 +1,18 @@
 class Solution {
-    public int pivotIndex(int[] nums) {
-        int pivot = -1;
-        if (nums.length == 0) 
-            return pivot;
-        int sum_left = 0, sum_right = 0;
-        for(int i = 1; i < nums.length; i++) 
-            sum_right += nums[i];
-        for (int i = 1; i < nums.length; i++) {
-            if (sum_left == sum_right) {
-                pivot = i-1;
-                return pivot;
-            }
-            
-            sum_right -= nums[i];
-            sum_left += nums[i-1];
+    public int pivotIndex(int[] nums)
+    {
+        if(nums.length<1)
+            return -1;
+        int rsum=0, lsum=0;
+        for(int x:nums)    //calculating sum of the array
+            rsum+=x;
+        for(int x=0; x<nums.length; x++)
+        {
+            rsum-=nums[x];
+            if(rsum==lsum)
+                return x;
+            lsum+=nums[x];
         }
-        if(sum_right == sum_left)
-            pivot = nums.length - 1;
-        return pivot;
+        return -1;
     }
 }
